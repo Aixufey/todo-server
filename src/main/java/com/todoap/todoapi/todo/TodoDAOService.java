@@ -16,9 +16,11 @@ public class TodoDAOService {
     private static int todosCount = 0;
 
     static {
-        todos.add(new Todo(++todosCount, "test", "Learn Full stack", LocalDate.now().plusYears(10), false));
-        todos.add(new Todo(++todosCount, "test", "Learn .NET", LocalDate.now().plusYears(20), false));
-        todos.add(new Todo(++todosCount, "test", "Learn iOS", LocalDate.now().plusYears(30), false));
+        todos.add(new Todo(++todosCount, "user", "Learn Full stack", LocalDate.now().plusYears(10), false));
+        todos.add(new Todo(++todosCount, "user", "Learn .NET", LocalDate.now().plusYears(20), false));
+        todos.add(new Todo(++todosCount, "user", "Learn iOS", LocalDate.now().plusYears(30), false));
+        todos.add(new Todo(++todosCount, "user", "Learn Android", LocalDate.now().plusYears(40), false));
+        todos.add(new Todo(++todosCount, "user", "Learn Java", LocalDate.now().plusYears(50), false));
     }
 
     public List<Todo> getAll() {
@@ -42,5 +44,10 @@ public class TodoDAOService {
     public void deleteById(int id) {
         Predicate<? super Todo> pred = todo -> todo.getId().equals(id);
         todos.removeIf(pred);
+    }
+
+    public void updateTodo(Todo todoJson) {
+        deleteById(todoJson.getId());
+        todos.add(todoJson);
     }
 }
