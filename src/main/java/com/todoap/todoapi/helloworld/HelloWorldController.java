@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RestController
 public class HelloWorldController {
+    @GetMapping(path = "/auth")
+    public String auth() {
+        return "Authenticated";
+    }
+
     @GetMapping(path = "/hello-world")
     public String helloWorld() {
         return "Hello World.....";
