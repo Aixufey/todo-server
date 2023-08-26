@@ -39,6 +39,7 @@ public class TodoController {
 
     @PostMapping("/users/{username}/todos")
     public Todo createToDo(@PathVariable String username, @RequestBody Todo todoJson) {
-        return dao.addTodo(username, todoJson.getDescription(), todoJson.getTargetDate(), todoJson.isDone());
+        dao.addTodo(username, todoJson.getDescription(), todoJson.getTargetDate(), todoJson.isDone());
+        return todoJson;
     }
 }
